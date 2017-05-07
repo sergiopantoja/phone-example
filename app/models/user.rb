@@ -27,6 +27,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable
 
+  has_many :phone_numbers
+
   before_save :ensure_api_key
 
   def ensure_api_key
