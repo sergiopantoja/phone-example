@@ -17,5 +17,5 @@ table.table
           span.text-muted style="margin-left: 5px" (#{call.to_number})
         td = call.user.name
         td
-          | #{call.created_at.strftime("%m/%d/%y at %l:M%p %Z)"}
+          | #{call.created_at.strftime("%m/%d/%y at %l:M%p %Z")}
           span.text-muted style="margin-left: 5px" (#{time_ago_in_words(call.created_at)} ago)
