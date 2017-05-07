@@ -4,7 +4,7 @@ class CallController < ApplicationController
     Call.create(to_number: params['To'], from_number: params['From'], user: user)
 
     response = Twilio::TwiML::Response.new do |r|
-      r.Dial callerId: params['To']) do |d|
+      r.Dial callerId: params['To'] do |d|
         d.Number user.mobile_phone
       end
     end
