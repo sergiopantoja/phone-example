@@ -1,0 +1,19 @@
+h1 Call List
+
+table.table
+  thead
+    tr
+      th From
+      th To
+      th Forwaded To
+      th Time
+
+  tbody
+    - @calls.each do |call|
+      tr
+        td = call.from_number
+        td
+          = PhoneNumber.find_by(number: call.to_number).name
+          span.text-muted style="margin-left: 5px" (#{call.to_number})
+        td = call.user.name
+        td = time_ago_in_words(call.created_at)

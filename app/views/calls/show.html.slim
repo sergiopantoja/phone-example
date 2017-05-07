@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong From number:
+  = @call.from_number
+p
+  strong To number:
+  = @call.to_number
+p
+  strong User:
+  = @call.user
+
+= link_to 'Edit', edit_call_path(@call)
+'|
+= link_to 'Back', calls_path
