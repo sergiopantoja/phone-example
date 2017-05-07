@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507182417) do
+ActiveRecord::Schema.define(version: 20170507192035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calls", force: :cascade do |t|
+    t.string   "to_number"
+    t.string   "from_number"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_calls_on_user_id", using: :btree
+  end
 
   create_table "phone_numbers", force: :cascade do |t|
     t.string   "name"
@@ -39,9 +48,11 @@ ActiveRecord::Schema.define(version: 20170507182417) do
     t.datetime "updated_at",                          null: false
     t.string   "api_key"
     t.string   "name"
+    t.string   "mobile_phone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "calls", "users"
   add_foreign_key "phone_numbers", "users"
 end
