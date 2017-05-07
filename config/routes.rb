@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'call/incoming'
+  post 'call/incoming'
 
   resources :phone_numbers
 
